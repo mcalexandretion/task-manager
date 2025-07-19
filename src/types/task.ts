@@ -7,7 +7,7 @@ export enum TaskCategory {
 }
 
 export enum TaskStatus {
-    ToDo = 'TO Do',
+    ToDo = 'To Do',
     InProgress = "In Progress",
     Done = 'Done'
 }
