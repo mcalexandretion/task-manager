@@ -7,7 +7,7 @@ export const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<TaskList />} />
       <Route path="/task/:id" element={<TaskDetails />} />
-<Route path="/create" element={<TaskDetails />} />
+<Route path="/new" element={<TaskDetails />} />
     </Routes>
   );
 };
