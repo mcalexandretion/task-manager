@@ -3,7 +3,7 @@ import { TaskContext } from '../context/TaskContext';
 import { TaskItem } from './TaskItem';
 import { Grid, FormControl, InputLabel, Select, MenuItem, Box, Button } from '@mui/material';
 import type { Task } from '../types/task';
-import {TaskStatus } from '../types/task';
+import {TaskStatus, TaskCategory, TaskPriority } from '../types/task';
 
 export const TaskList = () => {
   const taskContext = useContext(TaskContext);
@@ -19,19 +19,44 @@ export const TaskList = () => {
   return (
     <Box sx={{ p: 2 }}>
       <Box sx={{ display: 'flex', gap: 2, mb: 3, flexWrap: 'wrap' }}>
-        <FormControl sx={{ minWidth: 120 }}>
-          <InputLabel>Status</InputLabel>
-          <Select
-            value={filters.status || ''}
-            onChange={(e) => setFilters({ ...filters, status: e.target.value as TaskStatus })}
-          >
-            <MenuItem value="">All</MenuItem>
-            {Object.values(TaskStatus).map(status => (
-              <MenuItem key={status} value={status}>{status}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        {/* Можно добавить аналогичные селекторы для category и priority */}
+        <Box sx={{ display: 'flex', gap: 2, mb: 3, flexWrap: 'wrap' }}>
+  <FormControl sx={{ minWidth: 120 }}>
+    <InputLabel>Status</InputLabel>
+    <Select
+      value={filters.status || ''}
+      onChange={(e) => setFilters({ ...filters, status: e.target.value as TaskStatus })}
+    >
+      <MenuItem value="">All</MenuItem>
+      {Object.values(TaskStatus).map(status => (
+        <MenuItem key={status} value={status}>{status}</MenuItem>
+      ))}
+    </Select>
+  </FormControl>
+  <FormControl sx={{ minWidth: 120 }}>
+    <InputLabel>Category</InputLabel>
+    <Select
+      value={filters.category || ''}
+      onChange={(e) => setFilters({ ...filters, category: e.target.value as TaskCategory })}
+    >
+      <MenuItem value="">All</MenuItem>
+      {Object.values(TaskCategory).map(category => (
+        <MenuItem key={category} value={category}>{category}</MenuItem>
+      ))}
+    </Select>
+  </FormControl>
+  <FormControl sx={{ minWidth: 120 }}>
+    <InputLabel>Priority</InputLabel>
+    <Select
+      value={filters.priority || ''}
+      onChange={(e) => setFilters({ ...filters, priority: e.target.value as TaskPriority })}
+    >
+      <MenuItem value="">All</MenuItem>
+      {Object.values(TaskPriority).map(priority => (
+        <MenuItem key={priority} value={priority}>{priority}</MenuItem>
+      ))}
+    </Select>
+  </FormControl>
+</Box>
       </Box>
       <Grid container spacing={2}>
         {filteredTasks.map(task => (
