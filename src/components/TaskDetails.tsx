@@ -13,31 +13,39 @@ import {
   InputLabel,
   Typography 
 } from '@mui/material';
-
 export const TaskDetails = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const taskContext = useContext(TaskContext);
   
-  if (!taskContext || !id) {
-    return <Typography>Error: TaskContext or ID not available</Typography>;
+  if (!taskContext) {
+    return <Typography>Error: TaskContext not available</Typography>;
   }
 
-  const { tasks, updateTask } = taskContext;
-  const task = tasks.find(t => t.id === id);
+  const { tasks, addTask, updateTask } = taskContext;
+  const task = id ? tasks.find(t => t.id === id) : null;
   
-  if (!task) {
-    return <Typography>Task not found</Typography>;
-  }
+  const initialFormData: Task = task || {
+    id: '',
+    title: '',
+    description: '',
+    category: TaskCategory.Feature,
+    status: TaskStatus.ToDo,
+    priority: TaskPriority.Medium
+  };
 
-  const [formData, setFormData] = useState<Task>(task);
+  const [formData, setFormData] = useState<Task>(initialFormData);
 
   const handleSubmit = () => {
-    updateTask(id, formData);
+    if (id) {
+      updateTask(id, formData);
+    } else {
+      addTask(formData);
+    }
     navigate('/');
   };
 
-  return (
+   return (
     <Box sx={{ maxWidth: 600, mx: 'auto', p: 3 }}>
       <Typography variant="h4" gutterBottom>Edit Task</Typography>
       <Box component="form" sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -98,4 +106,28 @@ export const TaskDetails = () => {
       </Box>
     </Box>
   );
+
 };
+// export const TaskDetails = () => {
+//   const { id } = useParams<{ id: string }>();
+//   const navigate = useNavigate();
+//   const taskContext = useContext(TaskContext);
+  
+//   if (!taskContext || !id) {
+//     return <Typography>Error: TaskContext or ID not available</Typography>;
+//   }
+
+//   const { tasks, updateTask } = taskContext;
+//   const task = tasks.find(t => t.id === id);
+  
+//   if (!task) {
+//     return <Typography>Task not found</Typography>;
+//   }
+
+//   const [formData, setFormData] = useState<Task>(task);
+
+//   const handleSubmit = () => {
+//     updateTask(id, formData);
+//     navigate('/');
+//   };
+
