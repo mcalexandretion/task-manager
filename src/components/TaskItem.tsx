@@ -3,6 +3,7 @@ import { Card, CardContent, Typography, Chip, Button, Box} from '@mui/material';
 import type { Task } from '../types/task';
 import { TaskCategory, TaskPriority, TaskStatus } from '../types/task';
 import styles from '../styles/TaskItem.module.css';
+import React from "react";
 
 interface TaskItemProps {
     task: Task;
@@ -26,7 +27,7 @@ const getStatusColor = (status: TaskStatus) => {
     }
 };
 
-export const TaskItem = ( {task}: TaskItemProps) => {
+export const TaskItem = React.memo(( {task}: TaskItemProps) => {
     const navigate = useNavigate();
 
     return (
@@ -55,4 +56,4 @@ export const TaskItem = ( {task}: TaskItemProps) => {
             </CardContent>
         </Card>
     )
-}
+});
