@@ -45,7 +45,7 @@ export const TaskItem = React.memo(( {task}: TaskItemProps) => {
                     <Chip label={task.category} color='primary' size="small" />
                     <Chip
                     label={task.status} color={getStatusColor(task.status)} size="small"/>
-
+                    <Chip label={task.priority} color={getPriorityColor(task.priority)} size="small" />
                 </Box>
                 <Button
                 variant="contained"
