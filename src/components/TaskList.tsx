@@ -4,7 +4,6 @@ import { TaskContext } from '../context/TaskContext';
 import { useThemeContext } from '../context/ThemeContext';
 import { TaskItem } from './TaskItem';
 import { Box, FormControl, InputLabel, Select, MenuItem, Button, Typography, IconButton } from '@mui/material';
-import { Grid } from '@mui/material';
 import { TaskStatus, TaskCategory, TaskPriority } from '../types/task';
 import type { Task } from '../types/task';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -85,13 +84,13 @@ export const TaskList = () => {
       {filteredTasks.length === 0 ? (
         <Typography variant="h6" className={styles.noTasks}>No tasks match the selected filters</Typography>
       ) : (
-        <Grid container spacing={2}>
+        <div className={styles.taskGrid}>
           {filteredTasks.map(task => (
-            <Grid item xs={12} sm={6} md={4} key={task.id}>
+            <div className={styles.taskGridItem} key={task.id}>
               <TaskItem task={task} />
-            </Grid>
+            </div>
           ))}
-        </Grid>
+        </div>
       )}
     </Box>
   );

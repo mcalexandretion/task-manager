@@ -46,6 +46,44 @@
   padding: 8px;
 }
 
+.gridContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -8px;
+}
+
+.gridContainer > * {
+  padding: 8px;
+}
+
+.taskGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0 -8px;
+}
+
+.taskGridItem {
+  flex: 1 1 100%;
+  max-width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+  .taskGridItem {
+    flex: 1 1 calc(50% - 16px);
+    max-width: calc(50% - 16px);
+  }
+}
+
+@media (min-width: 960px) {
+  .taskGridItem {
+    flex: 1 1 calc(33.333% - 16px);
+    max-width: calc(33.333% - 16px);
+  }
+}
+
 @media (max-width: 600px) {
   .taskListContainer {
     padding: 16px;
