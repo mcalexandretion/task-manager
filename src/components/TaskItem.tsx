@@ -37,12 +37,12 @@ export const TaskItem = React.memo(( {task}: TaskItemProps) => {
                     {task.title}
                 </Typography>
                 {task.description && (
-                    <Typography variant="body2" color="text.secondary" paragraph className={styles.description}>
+                    <Typography variant="body2" color="text.secondary" paragraph>
                         {task.description}
                     </Typography>
                 )}
-                <Box className={styles.chips}>
-                    <Chip label={task.category} color='primary' size="small" />
+                <Box sx={{display:'flex', gap:1, flexWrap:'wrap', mb: 2}}>
+                    <Chip label={task.category} color='secondary' size="small" />
                     <Chip
                     label={task.status} color={getStatusColor(task.status)} size="small"/>
                     <Chip label={task.priority} color={getPriorityColor(task.priority)} size="small" />

@@ -1,6 +1,7 @@
+
 .taskCard {
   margin: 16px;
-  border-radius: 8px;
+  border-radius: 16px;
   background-color: inherit;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -18,14 +19,18 @@
 
 .description {
   color: inherit;
-  
+  margin-bottom: 12px;
 }
 
-.chips {
+.chipsContainer {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
   margin-bottom: 16px;
+}
+
+.editButton {
+  margin-top: 8px;
 }
 
 @media (max-width: 600px) {

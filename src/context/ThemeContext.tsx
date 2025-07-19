@@ -5,10 +5,10 @@ import CssBaseline from '@mui/material/CssBaseline';
 const lightTheme = createTheme({
   palette: {
     mode: 'light',
-    primary: { main: '#1976d2' },
-    secondary: { main: '#f50057' }, 
+    primary: { main: '#42307F' },
+    secondary: { main: '#2E477B' }, 
     background: { default: '#f5f5f5', paper: '#ffffff' },
-    text: { primary: '#333', secondary: '#666' },
+    text: { primary: '#25706D', secondary: '	#B88E3D' },
   },
   typography: {
     h4: { fontWeight: 600 },
@@ -19,10 +19,10 @@ const lightTheme = createTheme({
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
-    primary: { main: '#90caf9' }, 
-    secondary: { main: '#f48fb1' }, 
-    background: { default: '#121212', paper: '#1e1e1e' },
-    text: { primary: '#ffffff', secondary: '#cccccc' },
+    primary: { main: '#7E6EB3' },
+    secondary: { main: '#6B81B0' }, 
+    background: { default: '#1f1e1eff', paper: '#1e1e1e' },
+    text: { primary: '#5EA5A3', secondary: '	#E7C583' },
   },
   typography: {
     h4: { fontWeight: 600 },
