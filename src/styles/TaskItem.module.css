@@ -1,0 +1,16 @@
+.taskCard {
+  margin: 16px;
+  width: 300px;
+  transition: transform 0.2s;
+}
+
+.taskCard:hover {
+  transform: translateY(-4px);
+}
+
+@media (max-width: 600px) {
+  .taskCard {
+    width: 100%;
+    margin: 8px 0;
+  }
+}
