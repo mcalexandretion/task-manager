@@ -13,11 +13,19 @@
 
 .title {
   font-weight: 500;
-  color: inherit; 
+  color: inherit;
 }
 
 .description {
-  color: inherit; 
+  color: inherit;
+  
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
 @media (max-width: 600px) {

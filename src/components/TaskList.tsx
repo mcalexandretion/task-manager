@@ -4,7 +4,7 @@ import { TaskContext } from '../context/TaskContext';
 import { useThemeContext } from '../context/ThemeContext';
 import { TaskItem } from './TaskItem';
 import { Box, FormControl, InputLabel, Select, MenuItem, Button, Typography, IconButton } from '@mui/material';
-import { Grid } from '@mui/material'; // Используем старый Grid
+import { Grid } from '@mui/material';
 import { TaskStatus, TaskCategory, TaskPriority } from '../types/task';
 import type { Task } from '../types/task';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -18,7 +18,7 @@ export const TaskList = () => {
   const [filters, setFilters] = useState<Partial<Task>>({});
 
   if (!taskContext) {
-    return <Typography color="error" align="center">Error: TaskContext is not available</Typography>;
+    return <Typography className={styles.noTasks} color="error">Error: TaskContext is not available</Typography>;
   }
 
   const { filterTasks } = taskContext;
@@ -26,16 +26,16 @@ export const TaskList = () => {
 
   return (
     <Box className={styles.taskListContainer}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+      <Box className={styles.header}>
         <Typography className="app-title">
           Task Manager
         </Typography>
-        <IconButton onClick={toggleTheme} color="inherit">
+        <IconButton onClick={toggleTheme}>
           {themeMode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
         </IconButton>
       </Box>
-      <Box sx={{ display: 'flex', gap: 2, mb: 4, flexWrap: 'wrap', justifyContent: 'center' }}>
-        <FormControl sx={{ minWidth: 120 }}>
+      <Box className={styles.filters}>
+        <FormControl className={styles.formControl}>
           <InputLabel>Status</InputLabel>
           <Select
             value={filters.status || ''}
@@ -48,7 +48,7 @@ export const TaskList = () => {
             ))}
           </Select>
         </FormControl>
-        <FormControl sx={{ minWidth: 120 }}>
+        <FormControl className={styles.formControl}>
           <InputLabel>Category</InputLabel>
           <Select
             value={filters.category || ''}
@@ -61,7 +61,7 @@ export const TaskList = () => {
             ))}
           </Select>
         </FormControl>
-        <FormControl sx={{ minWidth: 120 }}>
+        <FormControl className={styles.formControl}>
           <InputLabel>Priority</InputLabel>
           <Select
             value={filters.priority || ''}
@@ -83,9 +83,7 @@ export const TaskList = () => {
         </Button>
       </Box>
       {filteredTasks.length === 0 ? (
-        <Typography variant="h6" align="center" sx={{ mt: 4, color: 'text.secondary' }}>
-          No tasks match the selected filters
-        </Typography>
+        <Typography variant="h6" className={styles.noTasks}>No tasks match the selected filters</Typography>
       ) : (
         <Grid container spacing={2}>
           {filteredTasks.map(task => (

@@ -1,18 +1,20 @@
 import { useContext, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { TaskContext } from '../context/TaskContext';
-import {TaskCategory, TaskStatus, TaskPriority } from '../types/task';
-import type {Task} from '../types/task';
+import { TaskCategory, TaskStatus, TaskPriority } from '../types/task';
+import type { Task } from '../types/task';
 import { 
-  Box, 
-  TextField, 
-  Select, 
-  MenuItem, 
-  Button, 
-  FormControl, 
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
   InputLabel,
-  Typography 
+  Typography,
+  Box,
+  Button
 } from '@mui/material';
+import styles from '../styles/TaskDetail.module.css';
+
 export const TaskDetails = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -45,15 +47,16 @@ export const TaskDetails = () => {
     navigate('/');
   };
 
-   return (
-    <Box sx={{ maxWidth: 600, mx: 'auto', p: 3 }}>
-      <Typography variant="h4" gutterBottom>Edit Task</Typography>
-      <Box component="form" sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+  return (
+    <Box className={styles.container}>
+      <Typography className="app-title">Edit Task</Typography>
+      <Box component="form" className={styles.form}>
         <TextField
           label="Title"
           value={formData.title}
           onChange={(e) => setFormData({ ...formData, title: e.target.value })}
           required
+          fullWidth
         />
         <TextField
           label="Description"
@@ -61,8 +64,9 @@ export const TaskDetails = () => {
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           multiline
           rows={4}
+          fullWidth
         />
-        <FormControl>
+        <FormControl fullWidth>
           <InputLabel>Category</InputLabel>
           <Select
             value={formData.category}
@@ -73,7 +77,7 @@ export const TaskDetails = () => {
             ))}
           </Select>
         </FormControl>
-        <FormControl>
+        <FormControl fullWidth>
           <InputLabel>Status</InputLabel>
           <Select
             value={formData.status}
@@ -84,7 +88,7 @@ export const TaskDetails = () => {
             ))}
           </Select>
         </FormControl>
-        <FormControl>
+        <FormControl fullWidth>
           <InputLabel>Priority</InputLabel>
           <Select
             value={formData.priority}
@@ -95,7 +99,7 @@ export const TaskDetails = () => {
             ))}
           </Select>
         </FormControl>
-        <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
+        <Box className={styles.buttonsContainer}>
           <Button variant="contained" onClick={handleSubmit}>
             Save
           </Button>
@@ -106,28 +110,4 @@ export const TaskDetails = () => {
       </Box>
     </Box>
   );
-
 };
-// export const TaskDetails = () => {
-//   const { id } = useParams<{ id: string }>();
-//   const navigate = useNavigate();
-//   const taskContext = useContext(TaskContext);
-  
-//   if (!taskContext || !id) {
-//     return <Typography>Error: TaskContext or ID not available</Typography>;
-//   }
-
-//   const { tasks, updateTask } = taskContext;
-//   const task = tasks.find(t => t.id === id);
-  
-//   if (!task) {
-//     return <Typography>Task not found</Typography>;
-//   }
-
-//   const [formData, setFormData] = useState<Task>(task);
-
-//   const handleSubmit = () => {
-//     updateTask(id, formData);
-//     navigate('/');
-//   };
-

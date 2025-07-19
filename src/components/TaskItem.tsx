@@ -41,7 +41,7 @@ export const TaskItem = React.memo(( {task}: TaskItemProps) => {
                         {task.description}
                     </Typography>
                 )}
-                <Box sx={{display:'flex', gap:1, flexWrap:'wrap', mb: 2}}>
+                <Box className={styles.chips}>
                     <Chip label={task.category} color='primary' size="small" />
                     <Chip
                     label={task.status} color={getStatusColor(task.status)} size="small"/>
