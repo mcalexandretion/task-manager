@@ -1,7 +1,7 @@
 .taskCard {
   margin: 16px;
   border-radius: 8px;
-  background-color: #ffffff;
+  background-color: inherit;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
@@ -13,25 +13,11 @@
 
 .title {
   font-weight: 500;
-  color: #333;
+  color: inherit; 
 }
 
 .description {
-  color: #666;
-}
-
-@media (prefers-color-scheme: dark) {
-  .taskCard {
-    background-color: #2a2a2a;
-  }
-
-  .title {
-    color: #ffffff;
-  }
-
-  .description {
-    color: #cccccc;
-  }
+  color: inherit; 
 }
 
 @media (max-width: 600px) {

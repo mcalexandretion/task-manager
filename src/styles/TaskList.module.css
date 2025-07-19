@@ -1,5 +1,5 @@
 .taskListContainer {
-  background-color: #ffffff;
+  background-color: inherit; 
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -13,32 +13,11 @@
   transform: translateY(-4px);
 }
 
-.title {
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 24px;
-}
-
-@media (prefers-color-scheme: dark) {
-  .taskListContainer {
-    background-color: #1e1e1e;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  }
-
-  .title {
-    color: #ffffff;
-  }
-}
-
 @media (max-width: 600px) {
   .taskListContainer {
     padding: 16px;
     margin: 16px;
     border-radius: 8px;
     min-height: 300px;
-  }
-
-  .title {
-    font-size: 1.5rem;
   }
 }
