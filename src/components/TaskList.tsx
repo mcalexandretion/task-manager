@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { TaskContext } from '../context/TaskContext';
 import { TaskItem } from './TaskItem';
-import { Grid, FormControl, InputLabel, Select, MenuItem, Box } from '@mui/material';
+import { Grid, FormControl, InputLabel, Select, MenuItem, Box, Button } from '@mui/material';
 import type { Task } from '../types/task';
 import {TaskStatus } from '../types/task';
 
@@ -40,6 +40,13 @@ export const TaskList = () => {
           </Grid>
         ))}
       </Grid>
+<Button 
+  variant="contained" 
+  sx={{ mb: 2 }} 
+  onClick={() => navigate('/create')}
+>
+  Add Task
+</Button>
     </Box>
   );
 };
