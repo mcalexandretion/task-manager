@@ -1,16 +1,42 @@
 .taskCard {
   margin: 16px;
-  width: 300px;
-  transition: transform 0.2s;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .taskCard:hover {
   transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+  font-weight: 500;
+  color: #333;
+}
+
+.description {
+  color: #666;
+}
+
+@media (prefers-color-scheme: dark) {
+  .taskCard {
+    background-color: #2a2a2a;
+  }
+
+  .title {
+    color: #ffffff;
+  }
+
+  .description {
+    color: #cccccc;
+  }
 }
 
 @media (max-width: 600px) {
   .taskCard {
-    width: 100%;
     margin: 8px 0;
+    width: 100%;
   }
 }
