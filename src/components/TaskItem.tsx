@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, Typography, Chip, Button, Box} from '@mui/material';
 import type { Task } from '../types/task';
-import { TaskCategory, TaskPriority, TaskStatus } from '../types/task';
+import {TaskPriority, TaskStatus } from '../types/task';
 import styles from '../styles/TaskItem.module.css';
 import React from "react";
 
