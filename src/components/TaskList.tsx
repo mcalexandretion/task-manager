@@ -1,15 +1,19 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TaskContext } from '../context/TaskContext';
+import { useThemeContext } from '../context/ThemeContext';
 import { TaskItem } from './TaskItem';
-import { Box, FormControl, InputLabel, Select, MenuItem, Button, Typography } from '@mui/material';
-import { Grid } from '@mui/material';
+import { Box, FormControl, InputLabel, Select, MenuItem, Button, Typography, IconButton } from '@mui/material';
+import { Grid } from '@mui/material'; // Используем старый Grid
 import { TaskStatus, TaskCategory, TaskPriority } from '../types/task';
 import type { Task } from '../types/task';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import styles from '../styles/TaskList.module.css';
 
 export const TaskList = () => {
   const taskContext = useContext(TaskContext);
+  const { themeMode, toggleTheme } = useThemeContext();
   const navigate = useNavigate();
   const [filters, setFilters] = useState<Partial<Task>>({});
 
@@ -22,9 +26,14 @@ export const TaskList = () => {
 
   return (
     <Box className={styles.taskListContainer}>
-      <Typography variant="h4" align="center" gutterBottom className={styles.title}>
-        Task Manager
-      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+        <Typography className="app-title">
+          Task Manager
+        </Typography>
+        <IconButton onClick={toggleTheme} color="inherit">
+          {themeMode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
+        </IconButton>
+      </Box>
       <Box sx={{ display: 'flex', gap: 2, mb: 4, flexWrap: 'wrap', justifyContent: 'center' }}>
         <FormControl sx={{ minWidth: 120 }}>
           <InputLabel>Status</InputLabel>

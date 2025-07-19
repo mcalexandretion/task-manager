@@ -1,25 +1,17 @@
-import { TaskProvider } from './context/TaskContext';
-import { AppRoutes } from './routes/AppRoutes';
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-
-const theme = createTheme({
-  palette: {
-    mode: 'light',
-  },
-});
+import { TaskProvider } from './context/TaskContext';
+import { ThemeProviderWrapper } from './context/ThemeContext';
+import { AppRoutes } from './routes/AppRoutes';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <ThemeProviderWrapper>
       <TaskProvider>
-        <BrowserRouter>
+        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
           <AppRoutes />
         </BrowserRouter>
       </TaskProvider>
-    </ThemeProvider>
+    </ThemeProviderWrapper>
   );
 }
 
