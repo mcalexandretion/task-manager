@@ -33,11 +33,11 @@ export const TaskItem = React.memo(( {task}: TaskItemProps) => {
     return (
         <Card className={styles.taskCard}>
             <CardContent>
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h6" gutterBottom className={styles.title}>
                     {task.title}
                 </Typography>
                 {task.description && (
-                    <Typography variant="body2" color="text.secondary" paragraph>
+                    <Typography variant="body2" color="text.secondary" paragraph className={styles.description}>
                         {task.description}
                     </Typography>
                 )}
