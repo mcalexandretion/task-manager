@@ -11,9 +11,9 @@ interface TaskContextType {
     filterTasks: (filters: Partial<Task>) => Task[];
 }
 
-const TaskContext = createContext<TaskContextType | undefined> (undefined);
+export const TaskContext = createContext<TaskContextType | undefined> (undefined);
 
-const TaskProvider = ({children} : {children: ReactNode}) => {
+export const TaskProvider = ({children} : {children: ReactNode}) => {
     const [tasks, setTasks] = useState<Task[]>([
     {id: uuidv4(),
       title: 'Implement login feature',
