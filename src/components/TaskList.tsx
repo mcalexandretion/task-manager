@@ -1,12 +1,15 @@
 import { useContext, useState } from 'react';
 import { TaskContext } from '../context/TaskContext';
 import { TaskItem } from './TaskItem';
-import { Grid, FormControl, InputLabel, Select, MenuItem, Box, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Box, FormControl, InputLabel, Select, MenuItem, Button} from '@mui/material';
+import { Grid } from '@mui/material'; 
 import type { Task } from '../types/task';
 import {TaskStatus, TaskCategory, TaskPriority } from '../types/task';
 
 export const TaskList = () => {
   const taskContext = useContext(TaskContext);
+  const navigate = useNavigate();
   const [filters, setFilters] = useState<Partial<Task>>({});
 
   if (!taskContext) {
@@ -55,23 +58,25 @@ export const TaskList = () => {
         <MenuItem key={priority} value={priority}>{priority}</MenuItem>
       ))}
     </Select>
+    
   </FormControl>
+  <Button 
+  variant="contained" 
+  sx={{ mb: 2 }} 
+  onClick={() => navigate('/new')}
+>
+  Add Task
+</Button>
 </Box>
       </Box>
-      <Grid container spacing={2}>
+<Grid container spacing={2}>
         {filteredTasks.map(task => (
           <Grid item xs={12} sm={6} md={4} key={task.id}>
             <TaskItem task={task} />
           </Grid>
         ))}
       </Grid>
-<Button 
-  variant="contained" 
-  sx={{ mb: 2 }} 
-  onClick={() => navigate('/create')}
->
-  Add Task
-</Button>
+
     </Box>
   );
 };
