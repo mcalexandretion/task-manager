@@ -24,7 +24,7 @@ export const TaskDetails = () => {
     return <Typography>Error: TaskContext not available</Typography>;
   }
 
-  const { tasks, addTask, updateTask } = taskContext;
+  const { tasks, addTask, updateTask, deleteTask} = taskContext;
   const task = id ? tasks.find(t => t.id === id) : null;
   
   const initialFormData: Task = task || {
@@ -45,6 +45,13 @@ export const TaskDetails = () => {
       addTask(formData);
     }
     navigate('/');
+  };
+
+  const handleDelete = () => {
+    if (id) {
+      deleteTask(id);
+      navigate('/');
+    }
   };
 
   return (
@@ -106,6 +113,11 @@ export const TaskDetails = () => {
           <Button variant="outlined" onClick={() => navigate('/')}>
             Cancel
           </Button>
+          {id && (
+            <Button variant="contained" color="error" onClick={handleDelete}>
+              Delete
+            </Button>
+          )}
         </Box>
       </Box>
     </Box>
