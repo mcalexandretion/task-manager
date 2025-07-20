@@ -2,7 +2,7 @@
 
 # Домашнее задание №1
 ## Ссылка
-https://task-manager-olive-gamma.vercel.app/
+https://task-manager-10amm5sn6-sashas-projects-1e06fa40.vercel.app/
 ## Возможности
 - Создание, редактирование и просмотр задач
 - Фильтрация задач по статусу, категории и приоритету
