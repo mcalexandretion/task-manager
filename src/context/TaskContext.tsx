@@ -9,6 +9,7 @@ interface TaskContextType {
   tasks: Task[];
   addTask: (task: Omit<Task, 'id'>) => void;
   updateTask: (id: string, task: Partial<Task>) => void;
+  deleteTask: (id: string) => void;
   filterTasks: (filters: Partial<Task>) => Task[];
 }
 
@@ -42,6 +43,9 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
       task.id === id ? { ...task, ...updatedTask } : task
     ));
   };
+const deleteTask = (id: string) => {
+    setTasks(tasks.filter(task => task.id !== id));
+  };
 
   const filterTasks = (filters: Partial<Task>) => {
     return tasks.filter(task => 
@@ -52,7 +56,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <TaskContext.Provider value={{ tasks, addTask, updateTask, filterTasks }}>
+    <TaskContext.Provider value={{ tasks, addTask, updateTask,deleteTask,filterTasks }}>
       {children}
     </TaskContext.Provider>
   );
