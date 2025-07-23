@@ -2,7 +2,7 @@
 
 - [Домашнее задание №1 - ветка **_main_**](#дз-1)  
   https://task-manager-git-main-sashas-projects-1e06fa40.vercel.app/
-- [Домашнее задание №2 - ветка _**second-hw**_](#дз-2)
+- [Домашнее задание №2 - ветка _**second-hw**_](#дз-2)  
   https://task-manager-git-second-hw-sashas-projects-1e06fa40.vercel.app/
 
 ## ДЗ №1
