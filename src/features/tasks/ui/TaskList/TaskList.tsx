@@ -1,34 +1,26 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TaskContext } from '../context/TaskContext';
-import { useThemeContext } from '../context/ThemeContext';
-import { TaskItem } from './TaskItem';
+import { useThemeContext } from '../../../shared/ui/ThemeProvider/ThemeProvider';
+import { TaskItem } from '../TaskItem/TaskItem';
 import { Box, FormControl, InputLabel, Select, MenuItem, Button, Typography, IconButton } from '@mui/material';
-import { TaskStatus, TaskCategory, TaskPriority } from '../types/task';
-import type { Task } from '../types/task';
+import { TaskStatus, TaskCategory, TaskPriority } from '../../../entities/task/types/task';
+import type { Task } from '../../../entities/task/types/task';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import styles from '../styles/TaskList.module.css';
+import { useTaskStore } from '../../model/taskStore';
+import styles from './TaskList.module.css';
 
 export const TaskList = () => {
-  const taskContext = useContext(TaskContext);
-  const { themeMode, toggleTheme } = useThemeContext();
   const navigate = useNavigate();
+  const { themeMode, toggleTheme } = useThemeContext();
   const [filters, setFilters] = useState<Partial<Task>>({});
-
-  if (!taskContext) {
-    return <Typography className={styles.noTasks} color="error">Error: TaskContext is not available</Typography>;
-  }
-
-  const { filterTasks } = taskContext;
+  const { filterTasks } = useTaskStore();
   const filteredTasks = filterTasks(filters);
 
   return (
     <Box className={styles.taskListContainer}>
       <Box className={styles.header}>
-        <Typography className="app-title">
-          Task Manager
-        </Typography>
+        <Typography className="app-title">Task Manager</Typography>
         <IconButton onClick={toggleTheme}>
           {themeMode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
         </IconButton>
@@ -42,7 +34,7 @@ export const TaskList = () => {
             variant="outlined"
           >
             <MenuItem value="">All</MenuItem>
-            {Object.values(TaskStatus).map(status => (
+            {Object.values(TaskStatus).map((status) => (
               <MenuItem key={status} value={status}>{status}</MenuItem>
             ))}
           </Select>
@@ -55,7 +47,7 @@ export const TaskList = () => {
             variant="outlined"
           >
             <MenuItem value="">All</MenuItem>
-            {Object.values(TaskCategory).map(category => (
+            {Object.values(TaskCategory).map((category) => (
               <MenuItem key={category} value={category}>{category}</MenuItem>
             ))}
           </Select>
@@ -68,16 +60,12 @@ export const TaskList = () => {
             variant="outlined"
           >
             <MenuItem value="">All</MenuItem>
-            {Object.values(TaskPriority).map(priority => (
+            {Object.values(TaskPriority).map((priority) => (
               <MenuItem key={priority} value={priority}>{priority}</MenuItem>
             ))}
           </Select>
         </FormControl>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => navigate('/new')}
-        >
+        <Button variant="contained" color="primary" onClick={() => navigate('/new')}>
           Add Task
         </Button>
       </Box>
@@ -85,7 +73,7 @@ export const TaskList = () => {
         <Typography variant="h6" className={styles.noTasks}>No tasks match the selected filters</Typography>
       ) : (
         <div className={styles.taskGrid}>
-          {filteredTasks.map(task => (
+          {filteredTasks.map((task) => (
             <div className={styles.taskGridItem} key={task.id}>
               <TaskItem task={task} />
             </div>

@@ -46,16 +46,6 @@
   padding: 8px;
 }
 
-.gridContainer {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -8px;
-}
-
-.gridContainer > * {
-  padding: 8px;
-}
-
 .taskGrid {
   display: flex;
   flex-wrap: wrap;

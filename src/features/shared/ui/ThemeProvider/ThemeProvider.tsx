@@ -6,30 +6,29 @@ const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: { main: '#42307F' },
-    secondary: { main: '#2E477B' }, 
+    secondary: { main: '#2E477B' },
     background: { default: '#f5f5f5', paper: '#ffffff' },
-    text: { primary: '#25706D', secondary: '	#B88E3D' },
+    text: { primary: '#25706D', secondary: '#B88E3D' }
   },
   typography: {
     h4: { fontWeight: 600 },
-    h6: { fontWeight: 500 },
-  },
+    h6: { fontWeight: 500 }
+  }
 });
 
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: { main: '#7E6EB3' },
-    secondary: { main: '#6B81B0' }, 
+    secondary: { main: '#6B81B0' },
     background: { default: '#1f1e1eff', paper: '#1e1e1e' },
-    text: { primary: '#5EA5A3', secondary: '	#E7C583' },
+    text: { primary: '#5EA5A3', secondary: '#E7C583' }
   },
   typography: {
     h4: { fontWeight: 600 },
-    h6: { fontWeight: 500 },
-  },
+    h6: { fontWeight: 500 }
+  }
 });
-
 
 interface ThemeContextType {
   themeMode: 'light' | 'dark';
@@ -48,7 +47,7 @@ export const ThemeProviderWrapper = ({ children }: { children: React.ReactNode }
   }, [themeMode]);
 
   const toggleTheme = () => {
-    setThemeMode(prev => (prev === 'light' ? 'dark' : 'light'));
+    setThemeMode((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
   const theme = themeMode === 'light' ? lightTheme : darkTheme;
